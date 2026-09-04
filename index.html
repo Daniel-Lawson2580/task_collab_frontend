@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -382,8 +382,12 @@
     <script>
         const API_BASE = 'https://task-collab-backend-wgx2.onrender.com';
 
-        async function apiFetch(endpoint, options = {}) {
+                async function apiFetch(endpoint, options = {}) {
             options.credentials = 'include';
+            options.headers = options.headers || {};
+            const token = localStorage.getItem('api_token');
+            if (token) options.headers['Authorization'] = `Bearer ${token}`;
+            
             if(options.body && typeof options.body === 'object') {
                 options.body = JSON.stringify(options.body);
                 options.headers = { ...options.headers, 'Content-Type': 'application/json' };
@@ -414,6 +418,7 @@
             document.getElementById('landing-view').classList.add('hidden');
             document.getElementById('landing-view').classList.remove('hidden');
             localStorage.removeItem('user');
+            localStorage.removeItem('api_token');
         }
 
         document.getElementById('login-form').addEventListener('submit', async (e) => {
@@ -425,6 +430,7 @@
                 const data = await apiFetch('/auth/login.php', { method: 'POST', body: { email, password } });
                 if (data.success) {
                     localStorage.setItem('user', JSON.stringify(data.user || {}));
+                    if(data.token) localStorage.setItem('api_token', data.token);
                     initApp();
                 } else {
                     errDiv.textContent = data.error || 'Login failed';
@@ -548,6 +554,7 @@
     </script>
 </body>
 </html>
+
 
 
 
