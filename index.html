@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
@@ -59,6 +59,48 @@
             50% { background-position: 100% 100%; }
             100% { background-position: 0% 0%; }
         }
+            .main-layout {
+            display: flex;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: calc(100vh - 70px);
+        }
+        .sidebar {
+            width: 250px;
+            border-right: 1px solid var(--border-color);
+            background: var(--bg-color);
+            padding: 24px 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .content-area {
+            flex: 1;
+            padding: 32px;
+            overflow-y: auto;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 24px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+        }
+        .nav-item:hover {
+            background: rgba(0,0,0,0.02);
+            color: var(--text-main);
+        }
+        .nav-item.active {
+            color: var(--primary);
+            border-left-color: var(--primary);
+            background: rgba(66, 133, 244, 0.05);
+        }
+        .nav-item i {
+            font-size: 1.2rem;
+        }
     </style>
 </head>
 <body>
@@ -107,7 +149,7 @@
                     </div>
                     <div style="flex: 1; min-width: 300px;" class="animate-on-scroll">
                         <h2 style="font-size: 2.5rem; font-weight: 700; color: var(--text-main); margin-bottom: 20px;">Celebrate Every Milestone.</h2>
-                        <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.6;">Our platform isn't just about assigning tasksâ€”it's about achieving goals together. With real-time updates and seamless communication, every completed task feels like a victory for the whole team.</p>
+                        <p style="font-size: 1.1rem; color: var(--text-muted); line-height: 1.6;">Our platform isn't just about assigning tasksÃ¢â‚¬â€it's about achieving goals together. With real-time updates and seamless communication, every completed task feels like a victory for the whole team.</p>
                     </div>
                 </div>
             </section>
@@ -554,6 +596,7 @@
     </script>
 </body>
 </html>
+
 
 
 
