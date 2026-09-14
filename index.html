@@ -689,8 +689,11 @@
 
 
 
-        async function logout() {
-            await apiFetch('/auth/logout.php');
+        function logout() {
+            localStorage.removeItem('mock_logged_in');
+            localStorage.removeItem('user');
+            localStorage.removeItem('api_token');
+            localStorage.removeItem('current_view');
             handleLogoutState();
         }
 
@@ -702,6 +705,7 @@
         document.getElementById('login-form').addEventListener('submit', (e) => {
             e.preventDefault();
             // MOCK LOGIN: Instantly log in without checking credentials
+            localStorage.setItem('mock_logged_in', 'true');
             initApp();
         });
 
@@ -722,7 +726,8 @@
             document.getElementById('landing-view').classList.add('hidden');
             document.getElementById('login-view').classList.add('hidden');
             document.getElementById('app-view').classList.remove('hidden');
-            showView('dashboard');
+            const savedView = localStorage.getItem('current_view') || 'dashboard';
+            showView(savedView);
         }
 
         function handleLogoutState() {
@@ -733,10 +738,19 @@
 
         function showView(viewId) {
             document.querySelectorAll('.view-section').forEach(el => el.classList.add('hidden'));
+            
+            // Remove active from all nav items
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             
-            document.getElementById(`view-${viewId}`).classList.remove('hidden');
-            document.getElementById(`nav-${viewId}`).classList.add('active');
+            // Show the target view
+            const viewEl = document.getElementById(`view-${viewId}`);
+            if(viewEl) viewEl.classList.remove('hidden');
+            
+            // Highlight nav item (if it exists)
+            const navEl = document.getElementById(`nav-${viewId}`);
+            if(navEl) navEl.classList.add('active');
+            
+            localStorage.setItem('current_view', viewId);
             
             if (viewId === 'dashboard') loadDashboard();
             if (viewId === 'projects') loadProjects();
@@ -809,6 +823,10 @@
 
         // Scroll Animations
         document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('mock_logged_in') === 'true') {
+                initApp();
+            }
+
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
@@ -824,6 +842,7 @@
     </script>
 </body>
 </html>
+
 
 
 
