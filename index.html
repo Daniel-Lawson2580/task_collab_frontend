@@ -101,56 +101,7 @@
         .nav-item i {
             font-size: 1.2rem;
         }
-            .auth-layout {
-            display: flex;
-            min-height: 100vh;
-        }
-        .auth-image {
-            flex: 1;
-            background: linear-gradient(135deg, var(--primary) 0%, #2b5cce 100%);
-            color: white;
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .auth-brand-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .auth-hero-text h1 {
-            font-size: 3rem;
-            line-height: 1.2;
-            margin-bottom: 16px;
-        }
-        .auth-hero-text p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-        .auth-content {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
-            background: var(--bg-color);
-        }
-        .auth-form-container {
-            width: 100%;
-            max-width: 400px;
-        }
-        .brand-logo {
-            font-size: 1.25rem; 
-            font-weight: 700; 
-            color: var(--primary); 
-            display: flex; 
-            align-items: center; 
-            gap: 8px;
-        }
-    </style>
+        </style>
 </head>
 <body>
     <!-- Landing View -->
@@ -248,7 +199,7 @@
     <!-- App View -->
     <div id="login-view" class="auth-layout hidden">
         <div class="auth-image">
-            <div class="auth-brand-logo">
+            <div class="brand">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="2" fill="currentColor"/><rect x="14" y="3" width="7" height="7" rx="2" fill="currentColor"/><rect x="14" y="14" width="7" height="7" rx="2" fill="currentColor"/><path d="M3 16C3 14.8954 3.89543 14 5 14H10C11.1046 14 12 14.8954 12 16V21H5C3.89543 21 3 20.1046 3 19V16Z" fill="currentColor"/></svg>
                 SYNCTeams
             </div>
@@ -304,7 +255,7 @@
     <div id="app-view" class="hidden">
         <header class="header" style="padding: 12px 24px; border-bottom: 1px solid var(--border-color); background: var(--card-bg); display: flex; justify-content: space-between; align-items: center;">
             <div class="header-left">
-                <div class="brand-logo">
+                <div class="brand">
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="2" fill="currentColor"/><rect x="14" y="3" width="7" height="7" rx="2" fill="currentColor"/><rect x="14" y="14" width="7" height="7" rx="2" fill="currentColor"/><path d="M3 16C3 14.8954 3.89543 14 5 14H10C11.1046 14 12 14.8954 12 16V21H5C3.89543 21 3 20.1046 3 19V16Z" fill="currentColor"/></svg>
                   SYNCTeams
               </div>
@@ -864,6 +815,9 @@
     </script>
 </body>
 </html>
+
+
+
 
 
 
